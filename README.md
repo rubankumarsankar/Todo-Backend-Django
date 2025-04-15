@@ -10,33 +10,36 @@ A simple and clean RESTful Todo API built using **Django** and **Django REST Fra
 git clone https://github.com/yourusername/todo-backend.git
 cd todo-backend
 Create a Virtual Environment & Install Dependencies
+```
 
-
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install django djangorestframework django-cors-headers
+```
 
-** Start Project and App **
+2. ** Start Project and App **
 
+```bash
 django-admin startproject todoproject
 cd todoproject
 python manage.py startapp todo
+```
 
+3. ** Add to INSTALLED_APPS in settings.py: **
 
-** Add to INSTALLED_APPS in settings.py: **
-
-
+```bash
 INSTALLED_APPS = [
     ...
     'rest_framework',
     'corsheaders',
     'todo',
 ]
+```
 
+4. ** CORS Setup in settings.py: **
 
-** CORS Setup in settings.py: **
-
-
+```bash
 MIDDLEWARE = [
     ...
     'corsheaders.middleware.CorsMiddleware',
@@ -45,19 +48,21 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development
 
+```
 
-** Run Migrations **
-
+5. ** Run Migrations **
+```bash
 python manage.py makemigrations
 python manage.py migrate
+```
+6. ** Run Server **
 
-** Run Server **
-
+```bash
 python manage.py runserver
+```
+7. 🗂️ Folder Structure
 
-🗂️ Folder Structure
-
-
+```bash
 
 todoproject/
 │
@@ -80,19 +85,23 @@ todoproject/
 │
 └── manage.py
 
+```
 
-🧪 Test API with Postman
+8. 🧪 Test API with Postman
+
 ➕ Add Task
 POST /api/tasks/
 Body:
 
-
+```bash
 {
   "title": "Buy groceries",
   "due_date": "2025-04-16",
   "due_time": "15:30:00",
   "status": "Pending"
 }
+```
+
 📃 Get All Tasks
 GET /api/tasks/
 
@@ -100,19 +109,19 @@ GET /api/tasks/
 PUT /api/tasks/<id>/
 Body:
 
-
+```bash
 {
   "title": "Buy vegetables",
   "due_date": "2025-04-17",
   "due_time": "16:00:00",
   "status": "Completed"
 }
-
+``` 
 ❌ Delete Task
 DELETE /api/tasks/<id>/
 
 
-🛠️ Built With
+10. 🛠️ Built With
 
 Django
 
