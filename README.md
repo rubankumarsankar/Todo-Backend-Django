@@ -18,7 +18,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install django djangorestframework django-cors-headers
 ```
 
-2. ** Start Project and App **
+2. **Start Project and App**
 
 ```bash
 django-admin startproject todoproject
@@ -26,7 +26,7 @@ cd todoproject
 python manage.py startapp todo
 ```
 
-3. ** Add to INSTALLED_APPS in settings.py: **
+3. **Add to INSTALLED_APPS in settings.py:**
 
 ```bash
 INSTALLED_APPS = [
@@ -37,7 +37,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-4. ** CORS Setup in settings.py: **
+4. **CORS Setup in settings.py:**
 
 ```bash
 MIDDLEWARE = [
@@ -50,17 +50,17 @@ CORS_ALLOW_ALL_ORIGINS = True  # For development
 
 ```
 
-5. ** Run Migrations **
+5. **Run Migrations**
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
-6. ** Run Server **
+6. **Run Server**
 
 ```bash
 python manage.py runserver
 ```
-7. 🗂️ Folder Structure
+7. 🗂️ **Folder Structure**
 
 ```bash
 
@@ -87,7 +87,7 @@ todoproject/
 
 ```
 
-8. 🧪 Test API with Postman
+8. 🧪 **Test API with Postman**
 
 ➕ Add Task
 POST /api/tasks/
@@ -102,10 +102,10 @@ Body:
 }
 ```
 
-📃 Get All Tasks
+📃 **Get All Tasks**
 GET /api/tasks/
 
-🔁 Update Task
+🔁 **Update Task**
 PUT /api/tasks/<id>/
 Body:
 
@@ -117,14 +117,16 @@ Body:
   "status": "Completed"
 }
 ``` 
-❌ Delete Task
+❌**Delete Task**
 DELETE /api/tasks/<id>/
 
 
-10. 🛠️ Built With
+10. 🛠️ **Built With**
 
+```bash
 Django
 
 Django REST Framework
 
 django-cors-headers
+```
