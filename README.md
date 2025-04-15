@@ -1,67 +1,121 @@
-Todo Backend Django 
+# 📝 Django Todo API Backend
+
+A simple and clean RESTful Todo API built using **Django** and **Django REST Framework**.
+
+## 📦 Installation
+
+1. **Clone the Repository**
+
+```bash
+git clone https://github.com/yourusername/todo-backend.git
+cd todo-backend
+Create a Virtual Environment & Install Dependencies
 
 
-1. Install Django & Django REST Framework
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install django djangorestframework django-cors-headers
 
-    pip install django djangorestframework
+** Start Project and App **
 
- 2. Create Project & App
-
-    django-admin startproject todoproject
-    cd todoproject
-    python manage.py startapp todo
-
- 3. Make Migrations
+django-admin startproject todoproject
+cd todoproject
+python manage.py startapp todo
 
 
-    python manage.py makemigrations
-    python manage.py migrate
-
- 4. Folder Structure
-
-    todoproject/
-    │
-    ├── todo/
-    │   ├── __init__.py
-    │   ├── admin.py
-    │   ├── apps.py
-    │   ├── models.py
-    │   ├── serializers.py
-    │   ├── views.py      <-- task_api is defined here
-    │   ├── urls.py       <-- import from views
-    │   └── migrations/
-    │
-    ├── todoproject/
-    │   └── settings.py
-    │
-    └── manage.py
-
-5. Enable Django CORS
-    
-    Install CORS headers on the Django side:
-    pip install django-cors-headers
-
-6. Test API with Postman
-
-    POST /api/tasks/ - Add a task with title, due_date, due_time, and status (Pending by default).
-
-    GET /api/tasks/ - Get the list of tasks with due_date, due_time, and status.
-
-    PUT /api/tasks/<id>/ - Update a task's status and other fields.
-
-    DELETE /api/tasks/<id>/ - Delete a task.
-
-    Example POST data to add a task:
+** Add to INSTALLED_APPS in settings.py: **
 
 
-    {
-        "title": "Buy groceries",
-        "due_date": "2025-04-16",
-        "due_time": "15:30:00",
-        "status": "Pending"
-    }
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+    'corsheaders',
+    'todo',
+]
 
 
-7. Run Server
+** CORS Setup in settings.py: **
 
-    python manage.py runserver
+
+MIDDLEWARE = [
+    ...
+    'corsheaders.middleware.CorsMiddleware',
+    ...
+]
+
+CORS_ALLOW_ALL_ORIGINS = True  # For development
+
+
+** Run Migrations **
+
+python manage.py makemigrations
+python manage.py migrate
+
+** Run Server **
+
+python manage.py runserver
+
+🗂️ Folder Structure
+
+
+
+todoproject/
+│
+├── todo/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py         # task_api defined here
+│   ├── urls.py          # import views here
+│   └── migrations/
+│
+├── todoproject/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+└── manage.py
+
+
+🧪 Test API with Postman
+➕ Add Task
+POST /api/tasks/
+Body:
+
+
+{
+  "title": "Buy groceries",
+  "due_date": "2025-04-16",
+  "due_time": "15:30:00",
+  "status": "Pending"
+}
+📃 Get All Tasks
+GET /api/tasks/
+
+🔁 Update Task
+PUT /api/tasks/<id>/
+Body:
+
+
+{
+  "title": "Buy vegetables",
+  "due_date": "2025-04-17",
+  "due_time": "16:00:00",
+  "status": "Completed"
+}
+
+❌ Delete Task
+DELETE /api/tasks/<id>/
+
+
+🛠️ Built With
+
+Django
+
+Django REST Framework
+
+django-cors-headers
